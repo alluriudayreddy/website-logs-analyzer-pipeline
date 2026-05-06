@@ -10,4 +10,4 @@ def get_status_counts(data):
         else:
             status_counts[status] = 1
 
-        return status_counts
+    return status_counts
