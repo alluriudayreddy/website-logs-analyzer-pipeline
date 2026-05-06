@@ -1,10 +1,10 @@
 class LogAnalyzer:
 
-    def get_total_requests(data):
+    def get_total_requests(self, data):
         return len(data)
 
 
-    def get_status_counts(data):
+    def get_status_counts(self, data):
         status_counts = {}
         for item in data:
             status = item["status"]
@@ -16,7 +16,7 @@ class LogAnalyzer:
         return status_counts
 
 
-    def get_top_page(data):
+    def get_top_page(self, data):
         page_counts = {}
         for item in data:
             path =  item["path"]
@@ -31,7 +31,7 @@ class LogAnalyzer:
         return top_page
 
 
-    def get_average_response_time(data):
+    def get_average_response_time(self, data):
         total_response_time = 0
 
         for item in data:
@@ -42,7 +42,7 @@ class LogAnalyzer:
         return average_response_time
 
 
-    def get_method_counts(data):
+    def get_method_counts(self, data):
         method_counts = {}
 
         for item in data:
