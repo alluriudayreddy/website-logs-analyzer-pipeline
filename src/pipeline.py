@@ -3,13 +3,15 @@ from src.helpers import clear_line
 from src.analyzer import (
     get_total_requests,
     get_status_counts,
-    get_top_page
+    get_top_page,
+    get_average_response_time
 )
 def generate_report(results):
     with open("data/output/report.txt", "a") as file:
         file.write(f"Total requests: {results['total_requests']}\n")
         file.write(f"Status Counts: {results['status_counts']}\n")
         file.write(f"Top Page: {results['top_page']}\n")
+        file.write(f"Average Response Time: {results['average_response_time']}ms\n")
     
 
 def run_pipeline(file_path):
@@ -29,12 +31,14 @@ def run_pipeline(file_path):
     total_requests = get_total_requests(parsed_data)
     status_counts = get_status_counts(parsed_data)
     top_page = get_top_page(parsed_data)
+    average_response_time = get_average_response_time(parsed_data)
 
 
     results = {
         "total_requests": total_requests,
         "status_counts": status_counts,
-        "top_page": top_page
+        "top_page": top_page,
+        "average_response_time": average_response_time
     }
 
     generate_report(results)

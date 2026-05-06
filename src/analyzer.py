@@ -25,3 +25,13 @@ def get_top_page(data):
     top_page = max(page_counts, key=page_counts.get)
 
     return top_page
+
+def get_average_response_time(data):
+    total_response_time = 0
+
+    for item in data:
+        total_response_time += item["response_time"]
+
+    average_response_time = total_response_time / len(data)
+
+    return average_response_time
