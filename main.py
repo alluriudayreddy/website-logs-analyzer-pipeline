@@ -1,26 +1,9 @@
-from src.parser import parse_log_line
-from src.analyzer import get_total_requests, get_status_counts, get_top_page
+from src.pipeline import run_pipeline
 
 file_path = "data/input/logs.txt"
 
-with open(file_path, "r") as file:
-    lines = file.readlines()
+results = run_pipeline(file_path)
 
-    parsed_data = []
-
-    for line in lines:
-        line = line.strip() # Remove newline
-
-        result = parse_log_line(line)
-
-        if result:
-            parsed_data.append(result)
-
-    total = get_total_requests(parsed_data)
-    print("Total Requests:", total)
-
-    status_counts = get_status_counts(parsed_data)
-    print("Status Counts:", status_counts)
-
-    top_page = get_top_page(parsed_data)
-    print("Top Page:", top_page)
+print("Total Requests:", results["total_requests"])
+print("Status Counts:", results["status_counts"])
+print("Top Page:", results["top_page"])
