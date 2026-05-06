@@ -1,5 +1,5 @@
 from src.parser import parse_log_line
-from src.analyzer import get_total_requests, get_status_counts
+from src.analyzer import get_total_requests, get_status_counts, get_top_page
 
 file_path = "data/input/logs.txt"
 
@@ -21,3 +21,6 @@ with open(file_path, "r") as file:
 
     status_counts = get_status_counts(parsed_data)
     print("Status Counts:", status_counts)
+
+    top_page = get_top_page(parsed_data)
+    print("Top Page:", top_page)
