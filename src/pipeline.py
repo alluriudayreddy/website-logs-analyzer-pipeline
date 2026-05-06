@@ -19,12 +19,12 @@ def run_pipeline(file_path):
         if result:
             parsed_data.append(result)
 
-        total_requests = get_total_requests(parsed_data)
-        status_counts = get_status_counts(parsed_data)
-        top_page = get_top_page(parsed_data)
+    total_requests = get_total_requests(parsed_data)
+    status_counts = get_status_counts(parsed_data)
+    top_page = get_top_page(parsed_data)
 
-        return {
-            "total_requests": total_requests,
-            "status_counts": status_counts,
-            "top_page": top_page
+    return {
+        "total_requests": total_requests,
+        "status_counts": status_counts,
+        "top_page": top_page
         }
