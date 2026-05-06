@@ -1,4 +1,5 @@
 from src.parser import parse_log_line
+from src.helpers import clear_line
 from src.analyzer import (
     get_total_requests,
     get_status_counts,
@@ -12,7 +13,7 @@ def run_pipeline(file_path):
         lines = file.readlines()
 
     for line in lines:
-        line = line.strip()
+        line = clear_line(line)
 
         result = parse_log_line(line)
 
