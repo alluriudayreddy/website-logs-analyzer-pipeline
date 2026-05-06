@@ -1,12 +1,8 @@
 from src.parser import parse_log_line
 from src.helpers import clear_line
-from src.analyzer import (
-    get_total_requests,
-    get_status_counts,
-    get_top_page,
-    get_average_response_time,
-    get_method_counts
-)
+from src.analyzer import LogAnalyzer
+
+
 def generate_report(results):
     with open("data/output/report.txt", "a") as file:
         file.write(f"Total requests: {results['total_requests']}\n")
@@ -18,6 +14,7 @@ def generate_report(results):
 
 def run_pipeline(file_path):
     parsed_data = []
+    analyzer = LogAnalyzer()
 
     with open(file_path, "r") as file:
         lines = file.readlines()
@@ -30,11 +27,11 @@ def run_pipeline(file_path):
         if result:
             parsed_data.append(result)
 
-    total_requests = get_total_requests(parsed_data)
-    status_counts = get_status_counts(parsed_data)
-    top_page = get_top_page(parsed_data)
-    average_response_time = get_average_response_time(parsed_data)
-    method_counts = get_method_counts(parsed_data)
+    total_requests = analyzer.get_total_requests(parsed_data)
+    status_counts = analyzer.get_status_counts(parsed_data)
+    top_page = analyzer.get_top_page(parsed_data)
+    average_response_time = analyzer.get_average_response_time(parsed_data)
+    method_counts = analyzer.get_method_counts(parsed_data)
 
 
     results = {
