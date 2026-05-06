@@ -5,6 +5,12 @@ from src.analyzer import (
     get_status_counts,
     get_top_page
 )
+def generate_report(results):
+    with open("data/output/report.txt", "w") as file:
+        file.write(f"Total requests: {results['total_counts']}\n")
+        file.write(f"Status Counts: {results['status_counts']}\n")
+        file.write(f"Top Page: {results['top_page']}\n")
+        
 
 def run_pipeline(file_path):
     parsed_data = []
