@@ -18,7 +18,7 @@ def parse_log_line(line):
     try:
         status = int(parts[4])
         response_time =  parts[5].replace("ms","")
-        
+        response_time = int(response_time)
     except:
         return None
     
