@@ -7,10 +7,10 @@ from src.analyzer import (
 )
 def generate_report(results):
     with open("data/output/report.txt", "w") as file:
-        file.write(f"Total requests: {results['total_counts']}\n")
+        file.write(f"Total requests: {results['total_requests']}\n")
         file.write(f"Status Counts: {results['status_counts']}\n")
         file.write(f"Top Page: {results['top_page']}\n")
-        
+    
 
 def run_pipeline(file_path):
     parsed_data = []
@@ -30,8 +30,13 @@ def run_pipeline(file_path):
     status_counts = get_status_counts(parsed_data)
     top_page = get_top_page(parsed_data)
 
-    return {
+
+    results = {
         "total_requests": total_requests,
         "status_counts": status_counts,
         "top_page": top_page
-        }
+    }
+
+    generate_report(results)
+    return results
+    
